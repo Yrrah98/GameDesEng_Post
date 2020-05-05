@@ -41,7 +41,9 @@ namespace GameCode.Minds
                 if (((OnCollisionEventArgs)pArgs).e1 is TopWall || ((OnCollisionEventArgs)pArgs).e2 is TopWall)
                 {
                     for (int i = 0; i < possessedEntity.Shape.Points.Count; i++)
+                    {
                         possessedEntity.Shape.Points[i] += ((OnCollisionEventArgs)pArgs)._mtv * 2;
+                    }
                 }
             }
 

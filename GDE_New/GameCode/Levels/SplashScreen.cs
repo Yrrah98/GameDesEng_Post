@@ -50,7 +50,7 @@ namespace GameCode.Levels
                 if (_txtrAlpha <= 0)
                 {
                     this.SwitchLevel = true;
-                    UnloadContent();
+                    Unload();
                 }
 
             Color c = new Color(_txtrAlpha, _txtrAlpha, _txtrAlpha, _txtrAlpha);
@@ -67,7 +67,7 @@ namespace GameCode.Levels
             return spriteBatch;
         }
 
-        public override void UnloadContent()
+        public override void Unload()
         {
             TitleTexture.Dispose();
         }

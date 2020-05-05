@@ -13,6 +13,8 @@ namespace GameEngine.Interfaces
 
         bool SwitchLevel { get; }
 
+        void Unload();
+
         void PassMngers();
 
         void Initialise();

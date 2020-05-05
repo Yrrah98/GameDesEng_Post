@@ -82,7 +82,7 @@ namespace GameCode.Levels
 
         public abstract void LoadContent();
 
-        public abstract void UnloadContent();
+        public abstract void Unload();
 
         public abstract void PassMngers();
         #endregion

@@ -74,7 +74,7 @@ namespace GDE_New
             // CALL to InjectManagers into the level selected
             (_levelX as IManagerInject).InjectManagers(_entityMgr, _collisionMgr,
                 _inputMgr, _sceneMgr, _mindMgr, Content);
-
+            // Give the splash screen a rectangle 
             (_levelX as SplashScreen).TitleArea = new Rectangle(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
 
             // CALL to Initialise the current level
@@ -127,17 +127,25 @@ namespace GDE_New
             //if (Keyboard.GetState().IsKeyDown(Keys.P))
             //    PauseGameState();
 
+            // IF the levels switch level boolean is true
             if (_levelX.SwitchLevel)
             {
+                // THEN
+                // CALL to PassMngers method to pass the managers to the next level
                 _levelX.PassMngers();
-
+                // CALL to Unload method of the level
+                _levelX.Unload();
+                // SET the current level to the next level contained in the current level
                 _levelX = _levelX.NextLevel;
-
+                // CALL to to the new levels Initialise method
                 _levelX.Initialise();
-
+                // CALL to the next levels loadcontent method
                 _levelX.LoadContent();
             }
+            // ELSE IF the level isnt paused
             else if (!_paused)
+                // THEN 
+                // UPDATE the level
                 (_levelX as IUpdate).Update(gameTime);
 
 

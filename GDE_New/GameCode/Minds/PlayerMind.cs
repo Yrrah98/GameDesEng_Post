@@ -44,7 +44,8 @@ namespace GameCode.Minds
 
             if (((OnCollisionEventArgs)pArgs).uids[0] == possessedEntity.UID || ((OnCollisionEventArgs)pArgs).uids[1] == possessedEntity.UID)
             {
-                if (((OnCollisionEventArgs)pArgs).e1 is TopWall || ((OnCollisionEventArgs)pArgs).e2 is TopWall)
+                if (((OnCollisionEventArgs)pArgs).e1 is TopWall || ((OnCollisionEventArgs)pArgs).e2 is TopWall 
+                    || ((OnCollisionEventArgs)pArgs).e1 is DoorEntityTop || ((OnCollisionEventArgs)pArgs).e2 is DoorEntityTop)
                 {
 
                     for (int i = 0; i < possessedEntity.Shape.Points.Count; i++)

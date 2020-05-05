@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace GameEngine.Managers
 {
-    public class SceneManager : ISceneManager, IUpdate
+    public class SceneManager : ISceneManager, IUpdate, IUnload
     {
         /// <summary>
         /// PROPERTY: To access list of entities in the SceneManager
@@ -34,10 +34,33 @@ namespace GameEngine.Managers
             _sceneGraph = new SceneGraph();
         }
 
+        #region IUnload
+        public void Unload()
+        {
+            _sceneGraph.InSceneList.Clear();
+
+            _sceneGraph.StaticEntities.Clear();
+
+
+
+            //_sceneGraph.InSceneList = new List<IEntity>();
+        }
+        #endregion
+
         #region IUpdate
 
         public void Update(GameTime gameTime)
         {
+            foreach (IEntity e in _sceneGraph.InSceneList)
+                if (e.Remove)
+                    EToRemove = e;
+
+            foreach (IEntity s in _sceneGraph.StaticEntities)
+                if (s.Remove)
+                    EToRemove = s;
+
+            if (EToRemove != null)
+                RemoveFromScene(EToRemove);
         }
         #endregion
 
@@ -46,6 +69,8 @@ namespace GameEngine.Managers
         public void RemoveFromScene(IEntity e)
         {
             _sceneGraph.RemoveSceneList(e);
+
+            EToRemove = null;
         }
 
         /// <summary>
@@ -127,17 +152,6 @@ namespace GameEngine.Managers
                 if (e is SpeakingEntity)
                     if((e as SpeakingEntity).speechText != null)
                         spriteBatch.Draw((e as SpeakingEntity).speechText, new Rectangle(400, 600, (e as SpeakingEntity).speechText.Width, (e as SpeakingEntity).speechText.Height), Color.AntiqueWhite);
-
-
-                //spriteBatch.Draw(e.Texture,
-                //    new Vector2(e.Shape.Points[0].X, e.Shape.Points[0].Y),
-                //    new Rectangle((int)e.Shape.Points[0].X + 16, (int)e.Shape.Points[0].Y + 16, 32, 32),
-                //    e.Color,
-                //    e.Rotation,
-                //    new Vector2(16, 16),
-                //    1f,
-                //    SpriteEffects.None,
-                //    0);
 
             }
 

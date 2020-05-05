@@ -1,4 +1,7 @@
-﻿using GameEngine.BaseEntity;
+﻿using GameCode.Interfaces;
+using GameEngine;
+using GameEngine.BaseEntity;
+using GameEngine.Interfaces;
 using GameEngine.Shape;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -9,39 +12,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameCode.Entites
+namespace GameCode.Entites.EnvironmentEntity
 {
-    public class GhostlyGuid : SpeakingEntity
+    class FloorForBox : StaticEntity, IFloorPlate
     {
 
-        public bool activateTex { get; set; }
+        public IList<StrategyDelegate> doors { get; private set; } 
 
-        public Texture2D wlcmeTxt { get; set; }
-
-        public Texture2D pushBox { get; set; }
-
-        public GhostlyGuid()
+        public FloorForBox()
         {
+            doors = new List<StrategyDelegate>();
+        }
+
+        public void SubscribeDoor(StrategyDelegate pDoorDel)
+        {
+            doors.Add(pDoorDel);
         }
 
         public override void Initialise(ContentManager pContent, String pUID)
         {
             // SET this entities texture
             //this.texture = pContent.Load<Texture2D>("");
-            this.Texture = pContent.Load<Texture2D>("GhostlyGuide");
-
-            this.wlcmeTxt = pContent.Load<Texture2D>("FirstTxtBox");
-
-            this.pushBox = pContent.Load<Texture2D>("PushBoxText");
-
-            this.Height = 32;
-
-            this.Width = 32;
+            this.Texture = pContent.Load<Texture2D>("FloorForBox");
 
             this.UID = pUID;
         }
 
-        public override void SetPosition(Vector2 pPos)
+        public override void SetStaticPos(Vector2 pPos)
         {
             this.Position = pPos;
 

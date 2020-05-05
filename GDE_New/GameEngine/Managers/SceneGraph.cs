@@ -52,7 +52,11 @@ namespace GameEngine.Managers
         public void RemoveSceneList(IEntity e)
         {
             // CALL to Remove method in the list of entities
-            InSceneList.Remove(e);
+
+            if (InSceneList.Contains(e))
+                InSceneList.Remove(e);
+            else if (StaticEntities.Contains(e))
+                StaticEntities.Remove(e);
         }
         /// <summary>
         /// METHOD: SceneEntitiesDelegate, a method which will be used to return 

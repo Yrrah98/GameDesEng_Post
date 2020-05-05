@@ -1,4 +1,5 @@
-﻿using GameEngine.BaseEntity;
+﻿using GameCode.Storage;
+using GameEngine.BaseEntity;
 using GameEngine.Shape;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -11,32 +12,26 @@ using System.Threading.Tasks;
 
 namespace GameCode.Entites
 {
-    public class GhostlyGuid : SpeakingEntity
+    public class NextLevelEntity : AnimateableEntity
     {
 
-        public bool activateTex { get; set; }
-
-        public Texture2D wlcmeTxt { get; set; }
-
-        public Texture2D pushBox { get; set; }
-
-        public GhostlyGuid()
+        public NextLevelEntity()
         {
+
         }
 
         public override void Initialise(ContentManager pContent, String pUID)
         {
             // SET this entities texture
-            //this.texture = pContent.Load<Texture2D>("");
-            this.Texture = pContent.Load<Texture2D>("GhostlyGuide");
+            this.Texture = pContent.Load<Texture2D>("InfirmChar");
 
-            this.wlcmeTxt = pContent.Load<Texture2D>("FirstTxtBox");
-
-            this.pushBox = pContent.Load<Texture2D>("PushBoxText");
+            this.switchFrame = 100;
 
             this.Height = 32;
 
             this.Width = 32;
+
+            this.maxWidth = 4;
 
             this.UID = pUID;
         }

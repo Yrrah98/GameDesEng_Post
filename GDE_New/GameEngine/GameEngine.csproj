@@ -69,6 +69,7 @@
     <Compile Include="Interfaces\IManagers\ISceneManager.cs" />
     <Compile Include="Interfaces\IMind.cs" />
     <Compile Include="Interfaces\IShape.cs" />
+    <Compile Include="Interfaces\IUnload.cs" />
     <Compile Include="Interfaces\IUpdate.cs" />
     <Compile Include="Interfaces\IUpdateableComp.cs" />
     <Compile Include="Managers\CollisionManager.cs" />

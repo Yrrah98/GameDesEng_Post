@@ -195,9 +195,12 @@ namespace GameCode.Levels
 
         #region Inherited Methods
 
-        public override void UnloadContent()
+        public override void Unload()
         {
+            floor.Clear();
 
+            (_sceneManager as IUnload).Unload();
+            (_mindManager as IUnload).Unload();
         }
 
         /// <summary>

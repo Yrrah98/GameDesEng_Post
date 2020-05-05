@@ -12,8 +12,6 @@ namespace GameEngine.BaseEntity
 
         public String speech;
 
-        public SpriteFont sF { get; set; }
-
         public Texture2D speechText;
 
         public SpeakingEntity()

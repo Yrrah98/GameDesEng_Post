@@ -120,7 +120,6 @@ namespace GameEngine.Managers
                                 && _entityList[i].Shape.Points[0].Y + 32 >= e.Shape.Points[0].Y
                                 && _entityList[i].Shape.Points[0].Y <= e.Shape.Points[0].Y + 32)
                             {
-                                Console.WriteLine("collision happening");
                                 // THEN CALL _checkCollisions method, sending both entities into it
                                 _checkCollisions(_entityList[i], e);
                             }

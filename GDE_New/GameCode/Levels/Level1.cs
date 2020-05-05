@@ -30,6 +30,10 @@ namespace GameCode.Levels
 
         private IStorage _inventory;
 
+        private IList<IEntity> doors;
+
+        private IList<IEntity> floorPlates;
+
         private int[,] map1;
 
         /// <summary>
@@ -45,6 +49,8 @@ namespace GameCode.Levels
         /// </summary>
         public override void Initialise()
         {
+            NextLevel = new Level2();
+
             floor = new List<IEntity>();
 
             map1 = new int[,] {
@@ -56,18 +62,18 @@ namespace GameCode.Levels
                 { 0,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  7,  3,  0,  3,  3,  1,  1,  2,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  0, },
                 { 0,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  11,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  0, },
                 { 0,  4,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  0,  0,  0,  0,  0,  0,  0,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  0, }, 
-                { 0,  3,  3,  3,  9,  3,  3,  3,  0,  0,  0,  3,  3,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  3,  3,  3,  0,  0,  1,  1,  2,  1,  1,  0,  0,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  0, },
+                { 0,  3,  3,  3,  9,  3,  3,  3,  0,  0,  0,  16,  17,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  3,  3,  3,  0,  0,  1,  1,  2,  1,  1,  0,  0,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  0, },
                 { 0,  3,  3,  3,  3,  3,  3,  3,  2,  1,  1,  3,  3,  1,  1,  1,  1,  1,  2,  1,  1,  1,  1,  3,  3,  3,  0,  1,  3,  3,  3,  3,  3,  1,  0,  3,  3,  3,  3,  3,  0,  0,  0,  0,  0,  3,  3,  3,  0,  0, },
                 { 1,  3,  3,  3,  9,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  1,  1,  2,  1,  1,  3,  3,  3,  2,  0, },
-                { 3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0, },
+                { 3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  12,  0, },
                 { 6,  3,  9,  3,  9,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0, },
                 { 3,  3,  9,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0, },
                 { 3,  3,  9,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  1,  1,  2,  1,  1,  1,  1,  2,  1,  1,  0,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0, },
                 { 3,  3,  3,  3,  9,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0, },
-                { 3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  1,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0, },
-                { 3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  0,  0,  0,  0,  0,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0, },
-                { 0,  0,  0,  0,  0,  0,  0,  0,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  10,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  1,  1,  2,  1,  1,  1,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0, },
-                { 0,  1,  2,  1,  1,  2,  1,  1,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0, },
+                { 3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3, 13,  3,  1,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0, },
+                { 3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  14,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  0,  0,  0,  0,  0,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0, },
+                { 0,  0,  0,  0,  0,  0,  0,  0,  0,  3,  3,  3,  3,  3,  3,  3,  3,  15,  10,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  1,  1,  2,  1,  1,  1,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0, },
+                { 0,  1,  2,  1,  1,  2,  1,  1,  0,  3,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0, },
                 { 0,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  0,  0,  0,  0,  0,  0,  0,  0, },
                 { 0,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  1,  1,  1,  1,  1,  1,  1,  0, },
                 { 0,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  1,  1,  2,  1,  1,  1,  1,  1,  1,  2,  1,  1,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0, },
@@ -78,8 +84,6 @@ namespace GameCode.Levels
                 { 0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0, },
                 { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, }
             };
-            
-
             
         }
 
@@ -97,12 +101,18 @@ namespace GameCode.Levels
 
         private void GenerateMap(int[,] map, int size)
         {
+            doors = new List<IEntity>();
+
+            floorPlates = new List<IEntity>();
+
             for (int x = 0; x < map.GetLength(1); x++)
                 for (int y = 0; y < map.GetLength(0); y++)
                 {
                     int number = map[y, x];
 
                     IMind m;
+
+                    
 
                     switch (number)
                     {
@@ -176,6 +186,47 @@ namespace GameCode.Levels
                             AddAnimateable(e, new Vector2(x * size, y * size));
                             e = _entityManager.CreateEntity<FloorEntity>(_contentManager);
                             break;
+                        case 12:
+                            e = _entityManager.CreateEntity<NextLevelEntity>(_contentManager);
+                            m = _mindManager.CreateMind<NextLevelMind>(e);
+                            (m as ILevelSwitcher).InjectLevelSwitcher(StartNextLvl);
+                            AddAnimateable(e, new Vector2(x * size, y * size));
+                            (_collisionManager as IPublisher).Subscribe((m as ICollisionListener).OnCollisionEvent);
+                            e = _entityManager.CreateEntity<FloorEntity>(_contentManager);
+                            break;
+                        case 13:
+                            e = _entityManager.CreateEntity<FloorForBox>(_contentManager);
+                            m = _mindManager.CreateMind<FloorBoxMind>(e);
+                            floorPlates.Add(e);
+                            (_collisionManager as IPublisher).Subscribe((m as ICollisionListener).OnCollisionEvent);
+                            break;
+                        case 14:
+                            e = _entityManager.CreateEntity<DoorEntityTop>(_contentManager);
+                            AddAnimateable(e, new Vector2(x * size, y * size));
+                            doors.Add(e);
+                            e = _entityManager.CreateEntity<FloorEntity>(_contentManager);
+                            break;
+                        case 15:
+                            e = _entityManager.CreateEntity<DoorEntityBtm>(_contentManager);
+                            AddAnimateable(e, new Vector2(x * size, y * size));
+                            doors.Add(e);
+                            e = _entityManager.CreateEntity<FloorEntity>(_contentManager);
+                            break;
+                        case 16:
+                            e = _entityManager.CreateEntity<FrontLS>(_contentManager);
+                            AddAnimateable(e, new Vector2(x * size, y * size));
+                            doors.Add(e);
+                            e = _entityManager.CreateEntity<FloorEntity>(_contentManager);
+                            break;
+                        case 17:
+                            e = _entityManager.CreateEntity<FrontRS>(_contentManager);
+                            AddAnimateable(e, new Vector2(x * size, y * size));
+                            doors.Add(e);
+                            e = _entityManager.CreateEntity<FloorEntity>(_contentManager);
+                            break;
+
+
+
                     }
 
                     if(e is StaticEntity)
@@ -188,6 +239,35 @@ namespace GameCode.Levels
                         _sceneManager.AddEntityWorld(e);
 
                 }
+
+            // Local int to determine how many doors a plate should have assigned to it
+            // based on the numbder of doors divided by the number of plates
+            int val = doors.Count / floorPlates.Count;
+
+            // FOR loop through the floorPlates
+            for (int i = 0; i < floorPlates.Count; i++)
+            {
+                // Local int to store an index of a door to be removed,
+                // so doors aren't added to different plates twice
+                int doorToRemove = 0;
+                // FOR loop through the doors
+                for (int j = 0; j < doors.Count; j++)
+                {
+                    // IF the number of doors in the floor plate (cast to IFloorPlate)
+                    // is less than the maximum number of doors a plate can have
+                    if((floorPlates[i] as IFloorPlate).doors.Count < val)
+                        // THEN
+                        // CAST floor plate as IFloorPlate and subscribe the OpenThis memthod found at door j
+                        (floorPlates[i] as IFloorPlate).SubscribeDoor((doors[j] as IDoor).OpenThis);
+
+                    // SET doorToRemove var to j
+                    doorToRemove = j;
+                }
+
+                // CALL RemoveAt method sending in doorToRemove var
+                doors.RemoveAt(doorToRemove);
+
+            }
         }
 
         private void AddAnimateable(IEntity e, Vector2 pos)
@@ -197,11 +277,30 @@ namespace GameCode.Levels
             _sceneManager.AddEntityWorld(e);
         }
 
+        private void StartNextLvl()
+        {
+            this.SwitchLevel = true;
+        }
+
+        private void UnloadMind(IMind e)
+        {
+
+        }
+
         #region Inherited methods
 
-        public override void UnloadContent()
+        public override void Unload()
         {
-            
+            floor.Clear();
+
+            for (int i = 0; i < _mindManager.MindList.Count; i++)
+            {
+                (_collisionManager as IPublisher).UnSubscribe((_mindManager.MindList[i] as ICollisionListener).OnCollisionEvent);
+                (_collisionManager as IPublisher).UnSubscribe((_mindManager.MindList[i] as IInputListener).OnInputEvent);
+            }
+
+            (_sceneManager as IUnload).Unload();
+            (_mindManager as IUnload).Unload();
         }
         /// <summary>
         /// METHOD: LoadContent, a method which Loads the content of the levels

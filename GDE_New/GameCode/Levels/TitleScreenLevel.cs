@@ -68,7 +68,7 @@ namespace GameCode.Levels
             if (_txtrAlpha <= 0)
             {
                 SwitchLevel = true;
-                UnloadContent();
+                Unload();
             }
 
             
@@ -104,10 +104,9 @@ namespace GameCode.Levels
         #endregion
 
         #region Inherited Methods
-        public override void UnloadContent()
+        public override void Unload()
         {
             TitleTexture.Dispose();
-            PressStart.Dispose();
         }
 
         public override SpriteBatch Draw(SpriteBatch spriteBatch)
@@ -126,12 +125,14 @@ namespace GameCode.Levels
 
         public override void PassMngers()
         {
+            (this.NextLevel as IntroductionLvl).Area = this.TitleArea;
+
             (this.NextLevel as IManagerInject).InjectManagers(_entityManager, _collisionManager, _inputManager, _sceneManager, _mindManager, _contentManager);
         }
 
         public override void Initialise()
         {
-            NextLevel = new Level1();
+            NextLevel = new IntroductionLvl();
 
             this.TitleTexture = _contentManager.Load<Texture2D>("TitleScreen");
 

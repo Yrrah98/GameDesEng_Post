@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GameEngine.Managers
 {
-    public class MindManager : IMindManager, IUpdate
+    public class MindManager : IMindManager, IUpdate, IUnload
     {
         /// <summary>
         /// PROPERTY: MindList, a property which provides access to a list of Minds
@@ -28,6 +28,15 @@ namespace GameEngine.Managers
             MindList = new List<IMind>();
 
         }
+
+        #region IUnload
+        public void Unload()
+        {
+            MindList.Clear();
+
+            MindList = new List<IMind>();
+        }
+        #endregion
 
         #region IMindManager
 
