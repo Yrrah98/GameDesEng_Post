@@ -71,7 +71,6 @@ namespace GameCode.Minds
                             ((AnimateableEntity)possessedEntity).Shape.Points[i] += new Vector2(0, -16);
                         if(this._velocity.Y < 0)
                             ((AnimateableEntity)possessedEntity).Shape.Points[i] += new Vector2(0, 16);
-                        //((AnimateableEntity)possessedEntity).Shape.Points[i] += (possessedEntity as AnimateableEntity)._velocity * -2;
 
                     }
                 }

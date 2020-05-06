@@ -237,9 +237,8 @@ namespace GameCode.Levels
             {
                 int val = doors.Count / floorPlates.Count;
 
-                for (int i = 0; i < floorPlates.Count; i++)
+                for (int i = floorPlates.Count - 1; i >= 0; i--)
                 {
-
                     for (int j = doors.Count - 1; j >= 0; j--)
                     {
                         // IF the number of doors in the floor plate (cast to IFloorPlate)
