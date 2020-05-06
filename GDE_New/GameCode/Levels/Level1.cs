@@ -64,12 +64,12 @@ namespace GameCode.Levels
                 { 0,  4,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  0,  0,  0,  0,  0,  0,  0,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  0, }, 
                 { 0,  3,  3,  3,  9,  3,  3,  3,  0,  0,  0,  16,  17,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  3,  3,  3,  0,  0,  1,  1,  2,  1,  1,  0,  0,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  0, },
                 { 0,  3,  3,  3,  3,  3,  3,  3,  2,  1,  1,  3,  3,  1,  1,  1,  1,  1,  2,  1,  1,  1,  1,  3,  3,  3,  0,  1,  3,  3,  3,  3,  3,  1,  0,  3,  3,  3,  3,  3,  0,  0,  0,  0,  0,  3,  3,  3,  0,  0, },
-                { 1,  3,  3,  3,  9,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  1,  1,  2,  1,  1,  3,  3,  3,  2,  0, },
-                { 3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  12,  0, },
-                { 6,  3,  9,  3,  9,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0, },
-                { 3,  3,  9,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0, },
-                { 3,  3,  9,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  1,  1,  2,  1,  1,  1,  1,  2,  1,  1,  0,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0, },
-                { 3,  3,  3,  3,  9,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0, },
+                { 1,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  1,  1,  2,  1,  1,  3,  3,  3,  2,  0, },
+                { 3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  13,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  12,  0, },
+                { 6,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  1, },
+                { 3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3, },
+                { 3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  1,  1,  2,  1,  1,  1,  1,  2,  1,  1,  0,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3, },
+                { 3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3, },
                 { 3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3, 13,  3,  1,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0, },
                 { 3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  14,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  0,  0,  0,  0,  0,  0,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0, },
                 { 0,  0,  0,  0,  0,  0,  0,  0,  0,  3,  3,  3,  3,  3,  3,  3,  3,  15,  10,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0,  1,  1,  2,  1,  1,  1,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  0, },
@@ -138,6 +138,7 @@ namespace GameCode.Levels
                         case 5:
                             e = _entityManager.CreateEntity<PlayerEntity>(_contentManager);
                             m = _mindManager.CreateMind<PlayerMind>(e);
+                            (m as IPlayer).InjectPlayerDeathSequence(PlayerDeath);
                             (m as IStorer).Inject(_sceneManager.RemoveFromScene);
                             AddAnimateable(e, new Vector2(x * size, y * size));
                             _inventory = new Inventory();
@@ -244,30 +245,31 @@ namespace GameCode.Levels
             // based on the numbder of doors divided by the number of plates
             int val = doors.Count / floorPlates.Count;
 
-            // FOR loop through the floorPlates
             for (int i = 0; i < floorPlates.Count; i++)
             {
-                // Local int to store an index of a door to be removed,
-                // so doors aren't added to different plates twice
-                int doorToRemove = 0;
-                // FOR loop through the doors
-                for (int j = 0; j < doors.Count; j++)
+                
+                for (int j = doors.Count - 1; j >= 0; j--)
                 {
                     // IF the number of doors in the floor plate (cast to IFloorPlate)
                     // is less than the maximum number of doors a plate can have
-                    if((floorPlates[i] as IFloorPlate).doors.Count < val)
+                    if ((floorPlates[i] as IFloorPlate).doors.Count < val)
+                    {
                         // THEN
                         // CAST floor plate as IFloorPlate and subscribe the OpenThis memthod found at door j
                         (floorPlates[i] as IFloorPlate).SubscribeDoor((doors[j] as IDoor).OpenThis);
-
-                    // SET doorToRemove var to j
-                    doorToRemove = j;
+                        doors.RemoveAt(j);
+                    }
                 }
-
-                // CALL RemoveAt method sending in doorToRemove var
-                doors.RemoveAt(doorToRemove);
-
             }
+        }
+
+        private void PlayerDeath()
+        {
+            this.Unload();
+
+            this.Initialise();
+
+            this.LoadContent();
         }
 
         private void AddAnimateable(IEntity e, Vector2 pos)

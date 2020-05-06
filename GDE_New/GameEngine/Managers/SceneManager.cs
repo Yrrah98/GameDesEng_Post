@@ -125,8 +125,20 @@ namespace GameEngine.Managers
             // FOREACH loop through entities in sceneGraph list
             foreach (Entity e in _sceneGraph.InSceneList)
             {
-                
-                
+                // IF e is Killable
+                if (e is KillableEntity)
+                {
+                    // THEN
+                    // LOCAL Rectangle called G to store the green portion of hp bar. Width is the current health amount 
+                    Rectangle G = new Rectangle((int)(e as KillableEntity)._hpPos.X, (int)(e as KillableEntity)._hpPos.Y, (e as KillableEntity)._hpWidthCurr, 16);
+                    // LOCAL Rectangle called R to store the red portion of the hp bar, position is green bar + greens width and width is the value 
+                    // of the maximum health subtracted by the current health 
+                    Rectangle R = new Rectangle(G.X + G.Width , (int)(e as KillableEntity)._hpPos.Y, (e as KillableEntity)._hpWidthMax - (e as KillableEntity)._hpWidthCurr, 16);
+                    // DRAW the Green and Red HP bars
+                    spriteBatch.Draw((e as KillableEntity).GreenTxtr, G, Color.AntiqueWhite);
+                    spriteBatch.Draw((e as KillableEntity).RedTxtr, R, Color.AntiqueWhite);
+                }
+
                 if (e is AnimateableEntity)
                 {
                     // IF frameCounter is greater than the value of switchFrame 

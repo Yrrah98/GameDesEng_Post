@@ -11,6 +11,10 @@ namespace GameCode.Interfaces
     {
         IList<StrategyDelegate> doors { get; }
 
+        IList<StrategyDelegate> openDoors { get; }
+
         void SubscribeDoor(StrategyDelegate pDoorDel);
+
+        void SubscribeClose(StrategyDelegate pCloseDoor);
     }
 }

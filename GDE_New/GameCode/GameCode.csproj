@@ -65,6 +65,7 @@
     <Compile Include="Interfaces\IDoor.cs" />
     <Compile Include="Interfaces\IFloorPlate.cs" />
     <Compile Include="Interfaces\ILevelSwitcher.cs" />
+    <Compile Include="Interfaces\IPlayer.cs" />
     <Compile Include="Interfaces\IStorage.cs" />
     <Compile Include="Interfaces\IStorer.cs" />
     <Compile Include="Levels\BaseLevel.cs" />

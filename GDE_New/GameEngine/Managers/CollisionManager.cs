@@ -68,10 +68,10 @@ namespace GameEngine.Managers
                     //    CheckEntityCollisions(_sceneGraphEntities()[i], _staticEntities()[j]);
                     //}
 
-                    if (_sceneGraphEntities()[i].Shape.Points[0].X + 32 >= _staticEntities()[j].Shape.Points[0].X
-                        && _sceneGraphEntities()[i].Shape.Points[0].X <= _staticEntities()[j].Shape.Points[0].X + 32
-                        && _sceneGraphEntities()[i].Shape.Points[0].Y + 32 >= _staticEntities()[j].Shape.Points[0].Y
-                        && _sceneGraphEntities()[i].Shape.Points[0].Y <= _staticEntities()[j].Shape.Points[0].Y + 32)
+                    if (_sceneGraphEntities()[i].Shape.Points[0].X + 28 >= _staticEntities()[j].Shape.Points[0].X
+                        && _sceneGraphEntities()[i].Shape.Points[0].X <= _staticEntities()[j].Shape.Points[0].X + 28
+                        && _sceneGraphEntities()[i].Shape.Points[0].Y + 28 >= _staticEntities()[j].Shape.Points[0].Y
+                        && _sceneGraphEntities()[i].Shape.Points[0].Y <= _staticEntities()[j].Shape.Points[0].Y + 28)
                     {
                         // THEN
                         // CALL delegate _checkCollisions, passing in the two entities

@@ -48,6 +48,7 @@
     <Compile Include="Args\OnInputEventArgs.cs" />
     <Compile Include="BaseEntity\AnimateableEntity.cs" />
     <Compile Include="BaseEntity\Entity.cs" />
+    <Compile Include="BaseEntity\KillableEntity.cs" />
     <Compile Include="BaseEntity\SpeakingEntity.cs" />
     <Compile Include="BaseEntity\StaticEntity.cs" />
     <Compile Include="BaseItem\BaseItem.cs" />

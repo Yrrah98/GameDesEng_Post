@@ -19,14 +19,23 @@ namespace GameCode.Entites.EnvironmentEntity
 
         public IList<StrategyDelegate> doors { get; private set; } 
 
+        public IList<StrategyDelegate> openDoors { get; private set; }
+
         public FloorForBox()
         {
             doors = new List<StrategyDelegate>();
+
+            openDoors = new List<StrategyDelegate>();
         }
 
         public void SubscribeDoor(StrategyDelegate pDoorDel)
         {
             doors.Add(pDoorDel);
+        }
+
+        public void SubscribeClose(StrategyDelegate pClose)
+        {
+            openDoors.Add(pClose);
         }
 
         public override void Initialise(ContentManager pContent, String pUID)

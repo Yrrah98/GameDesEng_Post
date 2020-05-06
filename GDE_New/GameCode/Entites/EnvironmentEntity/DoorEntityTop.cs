@@ -17,7 +17,6 @@ namespace GameCode.Entites.EnvironmentEntity
 
         public DoorEntityTop()
         {
-
         }
 
         public void OpenThis()

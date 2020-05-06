@@ -38,20 +38,34 @@ namespace GameCode.Minds
             {
                 if (((OnCollisionEventArgs)pArgs).e1 is PlayerEntity)
                 {
+                    int count = 0;
+
                     foreach (KeyValuePair<String, BaseItem> v in (((OnCollisionEventArgs)pArgs).e1 as PlayerEntity)._inventory.ItemCollection)
                     {
-                        if (v.Value is Syringe)
+                        if (v.Value is Syringe || v.Value is BoneSawEntity || v.Value is LeechEntity)
+                        {
+                            count++;
+                        }
+                        if (count == 3)
                         {
                             _switch();
                         }
                     }
+
+                    
                 }
 
                 if (((OnCollisionEventArgs)pArgs).e2 is PlayerEntity)
                 {
+                    int count = 0;
+
                     foreach (KeyValuePair<String, BaseItem> v in (((OnCollisionEventArgs)pArgs).e2 as PlayerEntity)._inventory.ItemCollection)
                     {
-                        if (v.Value is Syringe)
+                        if (v.Value is Syringe || v.Value is BoneSawEntity || v.Value is LeechEntity)
+                        {
+                            count++;
+                        }
+                        if (count == 3)
                         {
                             _switch();
                         }

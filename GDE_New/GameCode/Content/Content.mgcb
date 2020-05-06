@@ -25,6 +25,12 @@
 /processorParam:TextureFormat=Color
 /build:../../../GDE_New/InfirmChar.png;InfirmChar.png
 
+#begin 430708__juandamb__running.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:430708__juandamb__running.mp3;Running.mp3
+
 #begin 4x4spriteSheet2.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -97,6 +103,18 @@
 /processorParam:TextureFormat=Color
 /build:DoorFrontFacingRS.png
 
+#begin EnemiesTxt.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:EnemiesTxt.png
+
 #begin Enemy.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -151,6 +169,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:GhostlyGuide.png
+
+#begin HpBarG.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:HpBarG.png
+
+#begin HpBarR.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:HpBarR.png
 
 #begin InfirmChar.png
 /importer:TextureImporter
@@ -223,6 +265,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:InventoryLong.png
+
+#begin ItemsTxt.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:ItemsTxt.png
 
 #begin Lamp.png
 /importer:TextureImporter

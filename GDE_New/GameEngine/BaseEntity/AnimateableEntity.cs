@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,8 @@ namespace GameEngine.BaseEntity
         /// PROPERTY: To access the current frame of the animation on Y axis
         /// </summary>
         public int CurrentFrameY { get; set; }
+
+        public SoundEffect eSfx { get; protected set; }
 
         public bool active { get; set; }
 

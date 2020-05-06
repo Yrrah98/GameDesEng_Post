@@ -17,7 +17,6 @@ namespace GameCode.Entites.EnvironmentEntity
 
         public FrontRS()
         {
-
         }
 
         public void OpenThis()

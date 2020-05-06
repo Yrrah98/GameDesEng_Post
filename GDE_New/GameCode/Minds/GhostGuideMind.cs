@@ -42,8 +42,12 @@ namespace GameCode.Minds
                 }
                 if (_count == 2)
                 {
-                    (possessedEntity as SpeakingEntity).speechText = null;
+                    (possessedEntity as SpeakingEntity).speechText = (possessedEntity as GhostlyGuid).enemiesTxt;
                 }
+                if (_count == 3)
+                    (possessedEntity as SpeakingEntity).speechText = (possessedEntity as GhostlyGuid).itemsTxt;
+                if(_count == 4)
+                    (possessedEntity as SpeakingEntity).speechText = null;
             }
 
             base.OnInputEvent(source, pArgs);

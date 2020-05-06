@@ -14,16 +14,21 @@ using GameEngine.BaseMind;
 using GameEngine.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
 
 namespace GameCode.Minds
 {
-    class PlayerMind : Mind, IStorer
+    class PlayerMind : Mind, IStorer, IPlayer
     {
         private Vector2 _velocity;
 
         private bool colliding = false;
 
+        private SoundEffectInstance sfxInst;
+
         private StoreItemDelegate _storeItem;
+
+        private StrategyDelegate InitiatePlayerDeath;
 
         /// <summary>
         /// CONSTRUCTOR
@@ -38,6 +43,13 @@ namespace GameCode.Minds
             _storeItem = pStore;
         }
 
+        #region IPlayer
+        public void InjectPlayerDeathSequence(StrategyDelegate pDeath)
+        {
+            InitiatePlayerDeath = pDeath;
+        }
+        #endregion
+
         public override void OnCollisionEvent(object source, EventArgs pArgs)
         {
 
@@ -51,9 +63,25 @@ namespace GameCode.Minds
                     for (int i = 0; i < possessedEntity.Shape.Points.Count; i++)
                     {
                         //((AnimateableEntity)possessedEntity).Shape.Points[i] += ((OnCollisionEventArgs)pArgs)._mtv * 2;
-                        ((AnimateableEntity)possessedEntity).Shape.Points[i] += (possessedEntity as AnimateableEntity)._velocity * -2;
+                        if(this._velocity.X > 0)
+                            ((AnimateableEntity)possessedEntity).Shape.Points[i] += new Vector2(-16, 0);
+                        if (this._velocity.X < 0)
+                            ((AnimateableEntity)possessedEntity).Shape.Points[i] += new Vector2(16, 0);
+                        if (this._velocity.Y > 0)
+                            ((AnimateableEntity)possessedEntity).Shape.Points[i] += new Vector2(0, -16);
+                        if(this._velocity.Y < 0)
+                            ((AnimateableEntity)possessedEntity).Shape.Points[i] += new Vector2(0, 16);
+                        //((AnimateableEntity)possessedEntity).Shape.Points[i] += (possessedEntity as AnimateableEntity)._velocity * -2;
 
                     }
+                }
+
+                if (((OnCollisionEventArgs)pArgs).e1 is Enemy1 || ((OnCollisionEventArgs)pArgs).e1 is Enemy2 ||
+                    ((OnCollisionEventArgs)pArgs).e2 is Enemy1 || ((OnCollisionEventArgs)pArgs).e2 is Enemy2)
+                {
+                    (possessedEntity as KillableEntity).TakeDamage(1);
+                    if ((possessedEntity as KillableEntity)._hpWidthCurr <= 0)
+                        InitiatePlayerDeath();
                 }
 
                 if (((OnCollisionEventArgs)pArgs).e1 is BoxEntity)
@@ -116,6 +144,13 @@ namespace GameCode.Minds
                 // SET active true
                 (possessedEntity as AnimateableEntity).active = true;
                 ((AnimateableEntity)possessedEntity)._velocity = this._velocity;
+                if (sfxInst == null)
+                {
+                    sfxInst = (possessedEntity as AnimateableEntity).eSfx.CreateInstance();
+                    sfxInst.Play();
+                }
+                else
+                    sfxInst.Play();
 
             }
             else if (((OnInputEventArgs)pArgs)._keys.IsKeyDown(Keys.S) && ((OnInputEventArgs)pArgs)._keys.IsKeyUp(Keys.D) && ((OnInputEventArgs)pArgs)._keys.IsKeyUp(Keys.A))
@@ -125,11 +160,18 @@ namespace GameCode.Minds
                 ((AnimateableEntity)possessedEntity).CurrentFrameY = 0;
                 (possessedEntity as AnimateableEntity).active = true;
                 ((AnimateableEntity)possessedEntity)._velocity = this._velocity;
-
+                if (sfxInst == null)
+                {
+                    sfxInst = (possessedEntity as AnimateableEntity).eSfx.CreateInstance();
+                    sfxInst.Play();
+                }
+                else
+                    sfxInst.Play();
             }
             else
             {
-                
+                if (sfxInst != null)
+                    sfxInst.Stop();
 
                 _velocity.Y = 0;
                 (possessedEntity as AnimateableEntity).active = false;
@@ -140,6 +182,14 @@ namespace GameCode.Minds
             {
                 _velocity.X = 4;
 
+                if (sfxInst == null)
+                {
+                    sfxInst = (possessedEntity as AnimateableEntity).eSfx.CreateInstance();
+                    sfxInst.Play();
+                }
+                else
+                    sfxInst.Play();
+
                 ((AnimateableEntity)possessedEntity).CurrentFrameY = 2;
                 (possessedEntity as AnimateableEntity).active = true;
                 ((AnimateableEntity)possessedEntity)._velocity = this._velocity;
@@ -147,6 +197,14 @@ namespace GameCode.Minds
             else if (((OnInputEventArgs)pArgs)._keys.IsKeyDown(Keys.A) && ((OnInputEventArgs)pArgs)._keys.IsKeyUp(Keys.W) && ((OnInputEventArgs)pArgs)._keys.IsKeyUp(Keys.S))
             {
                 _velocity.X = -4;
+
+                if (sfxInst == null)
+                {
+                    sfxInst = (possessedEntity as AnimateableEntity).eSfx.CreateInstance();
+                    sfxInst.Play();
+                }
+                else
+                    sfxInst.Play();
 
                 ((AnimateableEntity)possessedEntity).CurrentFrameY = 1;
                 (possessedEntity as AnimateableEntity).active = true;

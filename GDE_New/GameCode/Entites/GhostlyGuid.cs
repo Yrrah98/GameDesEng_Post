@@ -19,6 +19,10 @@ namespace GameCode.Entites
         public Texture2D wlcmeTxt { get; set; }
 
         public Texture2D pushBox { get; set; }
+        
+        public Texture2D enemiesTxt { get; set; }
+
+        public Texture2D itemsTxt { get; set; }
 
         public GhostlyGuid()
         {
@@ -33,6 +37,10 @@ namespace GameCode.Entites
             this.wlcmeTxt = pContent.Load<Texture2D>("FirstTxtBox");
 
             this.pushBox = pContent.Load<Texture2D>("PushBoxText");
+
+            this.enemiesTxt = pContent.Load<Texture2D>("EnemiesTxt");
+
+            this.itemsTxt = pContent.Load<Texture2D>("ItemsTxt");
 
             this.Height = 32;
 
